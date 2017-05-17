@@ -1,6 +1,6 @@
 #include "marklan.hpp"
 
-marlan::marklan()
+class marklan::marklan()
 {
     srand(time(NULL));
 }
@@ -32,7 +32,7 @@ int marklan::randstanje(MatrixXf matrica,int indeks)
     cerr << u << endl;
     float s=matrica(0,0);
     int i=0;
-    while(u>s & (i<matrix.col()))
+    while(u>s & (i<matrica.col()))
     {
         i=i+1;
         s=s+matrica(indeks,i);
