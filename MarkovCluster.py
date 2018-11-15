@@ -1,6 +1,3 @@
-'''
-@author: kobrica@pmf
-'''
 
 import numpy
 
@@ -13,9 +10,6 @@ class MarkovClustering(object):
         self.r = r
         
     def computeClusters(self, T = 100):
-        """
-        Treba da vrati listu klastera, otp 100 iteracija
-        """
  
         self.addSelfLoops()
         self.normalizeColumns()
@@ -44,35 +38,23 @@ class MarkovClustering(object):
             if s[y] != 0:
                 self.matrix[x][y] /= float(s[y])
         
-    def powerStep(self):      
-        """
-        Simulira random walk, dizes matricu na e-ti. Posle normalizacije nije simetricna. 
-        """
+    def powerStep(self): 
         temp = self.matrix
         for _ in range(self.e-1):
             temp = temp.dot(self.matrix) 
         self.matrix = temp
             
     def inflationStep(self):
-        """
-        //Da li je normalizirana po kolonama?
-        """
         self.matrix **= self.r 
         self.normalizeColumns();
     
     def steadyState(self, lastMatrix):
-        """
-        Vraca True ako je trenutna self.matrix jednaka poslednjoj 
-        """
         for (x,y), _ in numpy.ndenumerate(self.matrix):
             if self.matrix[x][y]-lastMatrix[x][y] != 0:
                 return False
         return True
         
     def interpretClusters(self):
-        """
-        Vraca listu klastera
-        """
         res = []
         for i in range(self.matrix.shape[0]):
             cluster = []
