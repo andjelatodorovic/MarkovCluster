@@ -1,8 +1,4 @@
 
-"""
-@author: kobrica@pmf
-"""
-
 class Node(object):
     
     def __init__(self, value):
@@ -32,8 +28,7 @@ class Graph(object):
         self.nodes = {}
         self.nodesCount = 0
         self.edgeCount = 0
-        
-    #Modifikacije/iso34
+       
     def addNode(self, key, value):
         
         if not self.hasNode(key):
